@@ -5,4 +5,5 @@ const weight = readline.questionFloat('Qual é o seu peso?');
 const height = readline.questionFloat('Qual é a sua altura?');
 
 const imcValue = imc(weight, height);
-console.log(imcValue)
+console.log(imcValue.imc)
+console.log(imcValue.message)
