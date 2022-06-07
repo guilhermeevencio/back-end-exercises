@@ -13,6 +13,17 @@ function promiseFunction(a, b, c) {
 }
 let randomNumber = Math.floor(Math.random() * 10 + 1);
 
-promiseFunction(randomNumber, randomNumber, randomNumber)
-  .then(result => console.log(result))
-  .catch(error => console.log(error.message));
+// promiseFunction(randomNumber, randomNumber, randomNumber)
+//   .then(result => console.log(result))
+//   .catch(error => console.log(error.message));
+
+async function assincrona() {
+  try {
+    const result = await promiseFunction(randomNumber, randomNumber, randomNumber);
+    console.log(result);
+  } catch (e) {
+    console.log(e.message);
+  }
+}
+
+assincrona();
