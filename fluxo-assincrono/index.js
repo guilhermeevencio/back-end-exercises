@@ -11,5 +11,8 @@ function promiseFunction(a, b, c) {
   })
   return promise;
 }
+let randomNumber = Math.floor(Math.random() * 10 + 1);
 
-promiseFunction(10, 2, 30).then(result => console.log(result))
+promiseFunction(randomNumber, randomNumber, randomNumber)
+  .then(result => console.log(result))
+  .catch(error => console.log(error.message));
