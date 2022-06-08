@@ -21,4 +21,9 @@ describe('Verifica o número', () => {
     const response = isNumberPositive(0);
     expect(response).to.be.equals('neutro');
   });
+
+  it('Retorna null caso o valor passado nao seja um número.', () => {
+    const response = isNumberPositive('0');
+    expect(response).to.be.equals('o valor deve ser um número');
+  });
 });
