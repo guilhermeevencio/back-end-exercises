@@ -23,5 +23,21 @@ const getCharById = async (id) => {
   }
 }
 
-getCharById('20');
+const removeChar = async () => {
+  try {
+    const response = await fs.readFile('simpsons.json', 'utf-8');
+    const data = JSON.parse(response);
+    const newArr = data.filter((simpson) => simpson.id !== '10' && simpson.id !== '6');
+    await fs.writeFile('simpsons.json', JSON.stringify(newArr));
 
+    
+
+  } catch (e) {
+    console.log('id não encontrado');
+  }
+}
+
+async function main() {
+  await removeChar();
+}
+main();
