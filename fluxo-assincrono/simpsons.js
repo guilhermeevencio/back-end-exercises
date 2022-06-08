@@ -52,7 +52,26 @@ const createNewFile = async () => {
   }
 }
 
-createNewFile()
+const addNelson = async () => {
+  try {
+    const response = await fs.readFile('simpsons.json', 'utf-8');
+    const data = JSON.parse(response);
+    const nelson = data.find((simpson) => Number(simpson.id) === 8);
+
+    const responseSimpson = await fs.readFile('simpsonFamily.json', 'utf-8');
+    const dataSimpson = JSON.parse(responseSimpson);
+    const newArr = [...dataSimpson, nelson];
+    console.log(newArr);
+    await fs.writeFile('./simpsonFamily.json', JSON.stringify(newArr));
+
+    
+
+  } catch (e) {
+    console.log(e.message);
+  }
+}
+
+addNelson()
 
 async function main() {
   await removeChar();
