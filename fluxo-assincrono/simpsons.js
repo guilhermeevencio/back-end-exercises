@@ -33,11 +33,29 @@ const removeChar = async () => {
     
 
   } catch (e) {
-    console.log('id não encontrado');
+    console.log(e.message);
   }
 }
+
+const createNewFile = async () => {
+  try {
+    const response = await fs.readFile('simpsons.json', 'utf-8');
+    const data = JSON.parse(response);
+    const newArr = data.filter((simpson) => Number(simpson.id) < 5);
+    console.log(newArr);
+    await fs.writeFile('./simpsonFamily.json', JSON.stringify(newArr), { flag: 'wx' });
+
+    
+
+  } catch (e) {
+    console.log(e.message);
+  }
+}
+
+createNewFile()
 
 async function main() {
   await removeChar();
 }
-main();
+
+
