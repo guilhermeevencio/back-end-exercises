@@ -25,6 +25,11 @@ app.post('/greetings', (req, res) => {
 
 });
 
+app.put('/users', (req, res) => {
+  const { name, age } = req.query;
+  return res.status(200).json({ 'message': `Seu nome é ${ name } e você tem ${ age } anos de idade` });
+});
+
 app.listen(3333, () => {
   console.log('Server is running');
 })
