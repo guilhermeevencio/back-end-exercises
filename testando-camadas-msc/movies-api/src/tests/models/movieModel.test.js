@@ -1,4 +1,8 @@
 const { expect } = require('chai');
+const sinon = require('sinon');
+
+const connection = require('../../models/connection');
+const MoviesModel = require('../../models/movieModel');
 
 describe('Insere um novo filme no BD', () => {
   const payloadMovie = {
@@ -6,6 +10,12 @@ describe('Insere um novo filme no BD', () => {
     directedBy: 'Jane Dow',
     releaseYear: 1999,
   }
+
+  before(async () => {
+    const execute = [{ insertId: 1 }]; // retorno esperado nesse teste
+
+    sinon.stub(connection, 'execute').resolves(execute);
+  });
 
   describe('quando é inserido com sucesso', () => {
 
